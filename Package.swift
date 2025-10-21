@@ -10,10 +10,12 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "AdsGlobalPackage",
-            targets: ["PAGAdSDK", "TikTokBusinessSDK"]),
+            targets: ["PAGAdSDK", "TikTokBusinessSDK"]
+        ),
         .library(
             name: "PAGAdSDK",
-            targets: ["PAGAdSDK"]),
+            targets: ["PAGAdSDK"]
+        ),
     ],
     dependencies: [],
     targets: [
@@ -86,5 +88,7 @@ let package = Package(
                 .linkedFramework("CoreML"),
                 .linkedFramework("AppTrackingTransparency"),
                 .linkedLibrary("z"),
+            ]
+        )
     ]
 )
