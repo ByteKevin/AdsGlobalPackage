@@ -29,6 +29,7 @@ let package = Package(
                 .target(name: "PAGAdSDKFramework"),
             ],
             resources: [.copy("PAGAdSDK.bundle")],
+            path: "Sources/PAGAdSDK",
             linkerSettings: [
                 .linkedFramework("UIKit"),
                 .linkedFramework("WebKit"),
