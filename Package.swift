@@ -10,7 +10,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "AdsGlobalPackage",
-            targets: ["PAGAdSDK", "TikTokBusinessSDKFramework"]),
+            targets: ["PAGAdSDK", "TikTokBusinessSDK"]),
         .library(
             name: "PAGAdSDK",
             targets: ["PAGAdSDK"]),
@@ -57,6 +57,14 @@ let package = Package(
                 .linkedLibrary("iconv"),
                 .linkedLibrary("c++abi"),
                 .linkedLibrary("c++"),
-            ]),
+            ]
+        ),
+        .target(
+            name: "TikTokBusinessSDK",
+            dependencies: [
+                .target(name: "TikTokBusinessSDKFramework"),
+            ],
+            linkerSettings: []
+        ),
     ]
 )
