@@ -28,7 +28,7 @@ let package = Package(
             dependencies: [
                 .target(name: "PAGAdSDKFramework"),
             ],
-            path: "Sources/PAGAdSDK",
+            path: "Sources/AdsGlobalPackage",
             resources: [.copy("PAGAdSDK.bundle")],
             linkerSettings: [
                 .linkedFramework("UIKit"),
