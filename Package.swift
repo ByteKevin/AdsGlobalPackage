@@ -64,7 +64,7 @@ let package = Package(
         .target(
             name: "TikTokBusinessSDK",
             dependencies: [
-                .target(name: "TikTokBusinessSDKFramework"),
+                .target(name: "TikTokBusinessSDK_Binary"),
                 .target(name: "PAGAdSDK"),
             ],
             linkerSettings: []
