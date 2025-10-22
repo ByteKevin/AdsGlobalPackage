@@ -9,26 +9,27 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "PAGAdSDK",
-            targets: ["PAGAdSDK"]
-        ),
+            name: "AdsGlobalPackage",
+            targets: ["AdsGlobalPackage"]),
         .library(
             name: "TikTokBusinessSDK",
-            targets: ["TikTokBusinessSDK"]
-        ),
+            targets: ["TikTokBusinessSDK"]),
     ],
     dependencies: [],
     targets: [
-        .binaryTarget(name: "PAGAdSDK_Binary",
+        .binaryTarget(name: "PAGAdSDK",
                       url: "https://tosv-sg.tiktok-row.org/obj/pangle-sdk-static-va/7.8.0.0/PAGAdSDK.xcframework.zip",
                       checksum: "705e6156c02e73d3aca475375492c45ff96f591d248589a8c3faeb6443317b86"),
-        .binaryTarget(name: "TikTokBusinessSDK_Binary",
+        .binaryTarget(name: "TikTokBusinessSDK",
                       url: "https://tosv-sg.tiktok-row.org/obj/pangle-sdk-static-va/7.8.0.0/TikTokBusinessSDK.xcframework.zip",
-                      checksum: "038da6e36f7c0a8a6dbcd8f3750932f2cfc8eb1dc14f5f7f3c488a956d3f61bf"),
+                      checksum: "038da6e36f7c0a8a6dbcd8f3750932f2cfc8eb1dc14f5f7f3c488a956d3f61bf",
+                      dependencies: [
+                        .target(name: "AdsGlobalPackage"),
+                      ]),
         .target(
-            name: "PAGAdSDK",
+            name: "AdsGlobalPackage",
             dependencies: [
-                .target(name: "PAGAdSDK_Binary"),
+                .target(name: "PAGAdSDK"),
             ],
             resources: [.copy("PAGAdSDK.bundle")],
             linkerSettings: [
@@ -59,15 +60,9 @@ let package = Package(
                 .linkedLibrary("iconv"),
                 .linkedLibrary("c++abi"),
                 .linkedLibrary("c++"),
-            ]
-        ),
-        .target(
-            name: "TikTokBusinessSDK",
-            dependencies: [
-                .target(name: "TikTokBusinessSDK_Binary"),
-                .target(name: "PAGAdSDK"),
-            ],
-            linkerSettings: []
-        )
+            ]),
+        .testTarget(
+            name: "AdsGlobalPackageTests",
+            dependencies: ["AdsGlobalPackage"]),
     ]
 )
